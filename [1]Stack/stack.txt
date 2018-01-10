@@ -1,0 +1,76 @@
+#include <iostream>
+using namespace std;
+
+const int maxSize = 100;
+
+class stack {
+    int top, arr[maxSize];
+public:
+
+    stack() {
+        top = -1;
+    }
+
+    bool isEmpty() {
+        if (top == -1) {
+            return true;
+        }
+
+        return false;
+    }
+
+    int topx() {
+        if (isEmpty()) {
+            cout << "\n\nError: Stack is empty";
+            return 0;
+        }
+
+        return arr[top];
+    }
+
+    void push(int x) {
+        if (top == maxSize-1) {
+            cout << "\n\nError: Stack overflow";
+        }
+        else {
+            arr[++top] = x;
+        }
+    }
+
+    int pop() {
+        if (isEmpty()) {
+            cout << "\n\nError: Stack underflow";
+            return 0;
+        }
+        top--;
+
+        return arr[top + 1];
+    }
+};
+
+int main() {
+
+    cout << "Implementing Stack using array\n\n";
+
+    stack s;
+    cout << "Declared a stack >>>\nEnter an integer to push: ";
+    int num;
+    cin >> num;
+    s.push(num);
+    cout << "Enter another integer to push: ";
+    cin >> num;
+    s.push(num);
+    cout << "\nInteger at top of stack is: " << s.topx();
+    cout << "\nPopping out >>>";
+    cout << "\nPopped out integer is: " << s.pop();
+    cout << "\nNow, integer at top of stack is: " << s.topx();
+    cout << "\nIs stack empty: " << (s.isEmpty() == 1 ? "True" : "False");
+    cout << "\nPopping out >>>";
+    cout << "\nPopped out integer is: " << s.pop();
+    cout << "\nNow, integer at top of stack is: " << s.topx();
+    cout << "\nIs stack empty: " << (s.isEmpty() == 1 ? "True" : "False");
+    cout << "\nPopping out >>>";
+    cout << "\nPopped out integer is: " << s.pop();
+
+    return 0;
+}
