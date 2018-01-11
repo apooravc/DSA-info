@@ -20,7 +20,7 @@ public:
         return false;
     }
 
-    int frontx() {
+    int Front() {
         if (isEmpty()) {
             cout << "\n\nError: Queue is empty";
             return 0;
@@ -48,16 +48,18 @@ public:
             cout << "\n\nError: Queue underflow";
             return 0;
         }
-
-        if (front + 1 == rear) {
-            int temp = front;
-            front = -1;
-            rear = -1;
-            return arr[temp];
+        else {
+            int frontx = arr[front];
+            if (front + 1 == rear) {
+                front = -1;
+                rear = -1;
+            }
+            else {
+                front++;
+            }
+            
+            return frontx;
         }
-
-        front++;
-        return arr[front - 1];
     }
 };
 
@@ -73,16 +75,16 @@ int main() {
     cout << "Enter another integer to enqueue: ";
     cin >> num;
     q.enqueue(num);
-    cout << "\nInteger at front of queue is: " << q.frontx();
-    cout << "\nDequeuing out >>>";
+    cout << "\nInteger at front of queue is: " << q.Front();
+    cout << "\nDequeuing >>>";
     cout << "\nDequeued integer is: " << q.dequeue();
-    cout << "\nInteger at front of queue is: " << q.frontx();
-    cout << "\nIs queue empty: " << (q.isEmpty() == 1 ? "True" : "False");
-    cout << "\nDequeuing out >>>";
+    cout << "\nInteger at front of queue is: " << q.Front();
+    cout << "\nIs queue empty?: " << (q.isEmpty() == 1 ? "True" : "False");
+    cout << "\nDequeuing >>>";
     cout << "\nDequeued integer is: " << q.dequeue();
-    cout << "\nInteger at front of queue is: " << q.frontx();
-    cout << "\nIs queue empty: " << (q.isEmpty() == 1 ? "True" : "False");
-    cout << "\nDequeuing out >>>";
+    cout << "\nInteger at front of queue is: " << q.Front();
+    cout << "\nIs queue empty?: " << (q.isEmpty() == 1 ? "True" : "False");
+    cout << "\nDequeuing >>>";
     cout << "\nDequeued integer is: " << q.dequeue();
 
     return 0;

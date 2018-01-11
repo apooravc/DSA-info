@@ -19,7 +19,7 @@ public:
         return false;
     }
 
-    int topx() {
+    int Top() {
         if (isEmpty()) {
             cout << "\n\nError: Stack is empty";
             return 0;
@@ -29,7 +29,7 @@ public:
     }
 
     void push(int x) {
-        if (top == maxSize-1) {
+        if (top == maxSize - 1) {
             cout << "\n\nError: Stack overflow";
         }
         else {
@@ -42,8 +42,8 @@ public:
             cout << "\n\nError: Stack underflow";
             return 0;
         }
-        top--;
 
+        top--;
         return arr[top + 1];
     }
 };
@@ -60,15 +60,15 @@ int main() {
     cout << "Enter another integer to push: ";
     cin >> num;
     s.push(num);
-    cout << "\nInteger at top of stack is: " << s.topx();
+    cout << "\nInteger at top of stack is: " << s.Top();
     cout << "\nPopping out >>>";
     cout << "\nPopped out integer is: " << s.pop();
-    cout << "\nNow, integer at top of stack is: " << s.topx();
-    cout << "\nIs stack empty: " << (s.isEmpty() == 1 ? "True" : "False");
+    cout << "\nNow, integer at top of stack is: " << s.Top();
+    cout << "\nIs stack empty?: " << (s.isEmpty() == 1 ? "True" : "False");
     cout << "\nPopping out >>>";
     cout << "\nPopped out integer is: " << s.pop();
-    cout << "\nNow, integer at top of stack is: " << s.topx();
-    cout << "\nIs stack empty: " << (s.isEmpty() == 1 ? "True" : "False");
+    cout << "\nNow, integer at top of stack is: " << s.Top();
+    cout << "\nIs stack empty?: " << (s.isEmpty() == 1 ? "True" : "False");
     cout << "\nPopping out >>>";
     cout << "\nPopped out integer is: " << s.pop();
 
