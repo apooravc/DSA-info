@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-const int maxSize = 100;
+const int maxSize = 3;
 
 class stack {
     int top, arr[maxSize];
@@ -53,8 +53,14 @@ int main() {
     cout << "Implementing Stack using array\n\n";
 
     stack s;
-    cout << "Declared a stack >>>\nEnter an integer to push: ";
+    cout << "Declared a stack [max size = 3 elements] >>>\nEnter an integer to push: ";
     int num;
+    cin >> num;
+    s.push(num);
+    cout << "Enter another integer to push: ";
+    cin >> num;
+    s.push(num);
+    cout << "Enter another integer to push: ";
     cin >> num;
     s.push(num);
     cout << "Enter another integer to push: ";
@@ -63,11 +69,15 @@ int main() {
     cout << "\nInteger at top of stack is: " << s.Top();
     cout << "\nPopping out >>>";
     cout << "\nPopped out integer is: " << s.pop();
-    cout << "\nNow, integer at top of stack is: " << s.Top();
+    cout << "\nInteger at top of stack is: " << s.Top();
     cout << "\nIs stack empty?: " << (s.isEmpty() == 1 ? "True" : "False");
     cout << "\nPopping out >>>";
     cout << "\nPopped out integer is: " << s.pop();
-    cout << "\nNow, integer at top of stack is: " << s.Top();
+    cout << "\nInteger at top of stack is: " << s.Top();
+    cout << "\nIs stack empty?: " << (s.isEmpty() == 1 ? "True" : "False");
+    cout << "\nPopping out >>>";
+    cout << "\nPopped out integer is: " << s.pop();
+    cout << "\nInteger at top of stack is: " << s.Top();
     cout << "\nIs stack empty?: " << (s.isEmpty() == 1 ? "True" : "False");
     cout << "\nPopping out >>>";
     cout << "\nPopped out integer is: " << s.pop();

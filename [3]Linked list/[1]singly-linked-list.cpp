@@ -6,11 +6,11 @@ struct node {
     node *next;
 };
 
-class list {
+class singlyLL {
     node *head, *tail;
 public:
 
-    list() {
+    singlyLL() {
         head = NULL;
         tail = NULL;
     }
@@ -32,9 +32,9 @@ public:
 
 int main() {
 
-    cout << "Implementing linked list\n\n";
+    cout << "Implementing Singly linked list\n\n";
 
-    list l;
+    singlyLL l;
     cout << "Declared a linked list >>>";
     cout << "\nIs the linked list empty?: " << (l.isEmpty() == 1 ? "True" : "False");
 
@@ -105,7 +105,7 @@ int main() {
 
 //Linked list operations
 
-bool list::isEmpty() {
+bool singlyLL::isEmpty() {
     if (head == NULL && tail == NULL) {
         return true;
     }
@@ -113,7 +113,7 @@ bool list::isEmpty() {
     return false;
 }
 
-void list::insertNodeAtLast(int value) {
+void singlyLL::insertNodeAtLast(int value) {
     //creates a new node and inserts it at end of list
     node *temp = new node;
     temp->data = value;
@@ -128,7 +128,7 @@ void list::insertNodeAtLast(int value) {
     temp->next = NULL;
 }
 
-void list::deleteNodeAtLast() {
+void singlyLL::deleteNodeAtLast() {
     if (isEmpty()) {
         cout << "\nError: List is empty";
     }
@@ -158,7 +158,7 @@ void list::deleteNodeAtLast() {
     }
 }
 
-void list::displayList() {
+void singlyLL::displayList() {
     if (isEmpty()) {
         cout << "\nError: List is empty";
     }
@@ -178,7 +178,7 @@ void list::displayList() {
     }
 }
 
-void list::lengthOfList() {
+void singlyLL::lengthOfList() {
     if (isEmpty()) {
         cout << "\nError: List is empty";
     }
@@ -193,7 +193,7 @@ void list::lengthOfList() {
     }
 }
 
-void list::searchForVal(int value) {
+void singlyLL::searchForVal(int value) {
     int duplicates[1000];
     //duplicates array stores positions of node with the given value
     if (isEmpty()) {
@@ -226,7 +226,7 @@ void list::searchForVal(int value) {
     }
 }
 
-void list::insertNodeAtFront(int value) {
+void singlyLL::insertNodeAtFront(int value) {
     node *temp = new node;
     temp->data = value;
     if (isEmpty()) {
@@ -240,7 +240,7 @@ void list::insertNodeAtFront(int value) {
     }
 }
 
-void list::deleteNodeAtFront() {
+void singlyLL::deleteNodeAtFront() {
     if (isEmpty()) {
         cout << "\nError: List is empty";
     }
@@ -264,7 +264,7 @@ void list::deleteNodeAtFront() {
     }
 }
 
-int list::listLength() {
+int singlyLL::listLength() {
     if (isEmpty()) {
         return 0;
     }
@@ -279,7 +279,7 @@ int list::listLength() {
     }
 }
 
-void list::insertNodeAtPosX(int x, int value) {
+void singlyLL::insertNodeAtPosX(int x, int value) {
     if (isEmpty()) {
         cout << "\nList is empty. Hence, entered position is irrelevant";
         cout << "\nAdding at front/last>>>\n";
@@ -325,7 +325,7 @@ void list::insertNodeAtPosX(int x, int value) {
     }
 }
 
-void list::deleteNodeAtPosX(int x) {
+void singlyLL::deleteNodeAtPosX(int x) {
     if (isEmpty()) {
         cout << "\nError: List is empty";
     }
@@ -369,7 +369,7 @@ void list::deleteNodeAtPosX(int x) {
     }
 }
 
-int list::posWithVal(int value) {
+int singlyLL::posWithVal(int value) {
     if (isEmpty()) {
         //when list is empty
         return -1;
@@ -398,7 +398,7 @@ int list::posWithVal(int value) {
     }
 }
 
-void list::deleteNodeWithVal(int value) {
+void singlyLL::deleteNodeWithVal(int value) {
     //deletes only a single node with the given value
     int x = posWithVal(value);
     if (x == -1) {
