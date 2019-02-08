@@ -1,102 +1,98 @@
 #include <iostream>
+#include <array>
 using namespace std;
 
-const int maxSize = 3;
+const int MAX_SIZE = 10;
 
-class queue {
-    int front, rear, arr[maxSize];
+class Queue {
+	int front, back, size;
+	array<int, MAX_SIZE> arr;
 public:
-
-    queue() {
-        front = -1;
-        rear = -1;
-    }
-
-    bool isEmpty() {
-        if (front == -1 && rear == -1) {
-            return true;
-        }
-
-        return false;
-    }
-
-    int Front() {
-        if (isEmpty()) {
-            cout << "\n\nError: Queue is empty";
-            return 0;
-        }
-
-        return arr[front];
-    }
-
-    void enqueue(int x) {
-        if (rear == maxSize) {
-            cout << "\n\nError: Queue overflow";
-        }
-        else {
-            if (isEmpty()) {
-                front++;
-                rear++;
-            }
-            arr[rear] = x;
-            rear++;
-        }
-    }
-
-    int dequeue() {
-        if (isEmpty()) {
-            cout << "\n\nError: Queue underflow";
-
-            return 0;
-        }
-        else {
-            int frontElement = arr[front];
-            if (front + 1 == rear) {
-                front = -1;
-                rear = -1;
-            }
-            else {
-                front++;
-            }
-            
-            return frontElement;
-        }
-    }
+	Queue() {
+		front = back = -1;
+		size = 0;
+	}
+	bool isEmpty() {
+		if (front == -1 && back == -1) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	int getSize() {
+		return size;
+	}
+	int getFront() {
+		if (isEmpty()) {
+			cout << "Error: Front undefined as queue is empty";
+			return 0;
+		}
+		else {
+			return arr[front];
+		}
+	}
+	int getBack() {
+		if (isEmpty()) {
+			cout << "Error: Back undefined as queue is empty";
+			return 0;
+		}
+		else {
+			return arr[back];
+		}
+	}
+	void enqueue(int x);
+	void dequeue();
 };
 
+void Queue::enqueue(int x) {
+	if (back == MAX_SIZE - 1) {
+		cout << "Error: Queue overflow";
+	}
+	else {
+		if (isEmpty()) {
+			front = back = 0;
+		}
+		else {
+			back++;
+		}
+		arr[back] = x;
+		size++;
+	}
+}
+
+void Queue::dequeue() {
+	if (isEmpty()) {
+		cout << "Error: Queue underflow";
+	}
+	else {
+		if (front == back) {
+			front = back = -1;
+		}
+		else {
+			front++;
+		}
+		size--;
+	}
+}
+
 int main() {
+	Queue q;
+	cout << "Is queue empty? " << q.isEmpty() << "\n";
+	cout << "En-queueing 1,2,3,4,5 ..." << "\n";
+	for (int i = 1; i <= 5; i++) {
+		q.enqueue(i);
+	}
+	cout << "Queue front element: " << q.getFront() << "\n";
+	cout << "Queue back element: " << q.getBack() << "\n";
+	cout << "Queue size: " << q.getSize() << "\n";
+	cout << "De-queueing 5,4 ..." << "\n";
+	q.dequeue();
+	q.dequeue();
+	cout << "Is queue empty? " << q.isEmpty() << "\n";
+	cout << "Queue front element: " << q.getFront() << "\n";
+	cout << "Queue back element: " << q.getBack() << "\n";
+	cout << "Queue size: " << q.getSize() << "\n";
 
-    cout << "Implementing Queue using array\n\n";
-
-    queue q;
-    cout << "Declared a queue [max size = 3 elements] >>>\nEnter an integer to enqueue: ";
-    int num;
-    cin >> num;
-    q.enqueue(num);
-    cout << "Enter another integer to enqueue: ";
-    cin >> num;
-    q.enqueue(num);
-    cout << "Enter another integer to enqueue: ";
-    cin >> num;
-    q.enqueue(num);
-    cout << "Enter another integer to enqueue: ";
-    cin >> num;
-    q.enqueue(num);
-    cout << "\nInteger at front of queue is: " << q.Front();
-    cout << "\nDequeuing >>>";
-    cout << "\nDequeued integer is: " << q.dequeue();
-    cout << "\nInteger at front of queue is: " << q.Front();
-    cout << "\nIs queue empty?: " << (q.isEmpty() == 1 ? "True" : "False");
-    cout << "\nDequeuing >>>";
-    cout << "\nDequeued integer is: " << q.dequeue();
-    cout << "\nInteger at front of queue is: " << q.Front();
-    cout << "\nIs queue empty?: " << (q.isEmpty() == 1 ? "True" : "False");
-    cout << "\nDequeuing >>>";
-    cout << "\nDequeued integer is: " << q.dequeue();
-    cout << "\nInteger at front of queue is: " << q.Front();
-    cout << "\nIs queue empty?: " << (q.isEmpty() == 1 ? "True" : "False");
-    cout << "\nDequeuing >>>";
-    cout << "\nDequeued integer is: " << q.dequeue();
-
-    return 0;
+	return 0;
 }
